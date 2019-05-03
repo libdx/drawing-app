@@ -12,7 +12,7 @@ import CoreGraphics
 protocol WhiteboardViewDelegate {
     func numberOfShapes(whiteboard: WhiteboardView) -> Int
     func shapeAt(whiteboard: WhiteboardView, index: Int) -> Shape
-    func hasNewShape(whiteboard: WhiteboardView, shape: Shape)
+    func didCreateShape(whiteboard: WhiteboardView, shape: Shape)
 }
 
 class WhiteboardView: UIView {
@@ -99,7 +99,7 @@ class WhiteboardView: UIView {
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let currentShape = currentShape else { return }
 
-        delegate?.hasNewShape(whiteboard: self, shape: currentShape)
+        delegate?.didCreateShape(whiteboard: self, shape: currentShape)
         self.currentShape = nil
     }
 

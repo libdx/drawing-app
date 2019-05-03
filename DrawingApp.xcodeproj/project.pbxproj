@@ -9,8 +9,15 @@
 /* Begin PBXBuildFile section */
 		91BDA2B2227C8F1A00FC1932 /* DrawingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BDA2B1227C8F1A00FC1932 /* DrawingOptionsViewController.swift */; };
 		91BDA2B4227C8F5600FC1932 /* DrawingOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91BDA2B3227C8F5600FC1932 /* DrawingOptionsViewController.xib */; };
+		91BDA2B7227CD18000FC1932 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BDA2B6227CD18000FC1932 /* Types.swift */; };
+		91BDA2B9227CD23300FC1932 /* SceneProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BDA2B8227CD23300FC1932 /* SceneProcessing.swift */; };
+		91BDA2BB227CD24F00FC1932 /* SceneInteracting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BDA2BA227CD24F00FC1932 /* SceneInteracting.swift */; };
+		91BDA2BD227CD29300FC1932 /* SceneViewController+Updating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BDA2BC227CD29300FC1932 /* SceneViewController+Updating.swift */; };
+		91BDA2BF227CD31700FC1932 /* SceneViewController+Interacting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BDA2BE227CD31700FC1932 /* SceneViewController+Interacting.swift */; };
+		91BDA2C3227CD80A00FC1932 /* SceneRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BDA2C2227CD80A00FC1932 /* SceneRouting.swift */; };
+		91BDA2C5227CD91100FC1932 /* SceneState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BDA2C4227CD91100FC1932 /* SceneState.swift */; };
 		91E1C4C8227A3F0A00C6F139 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E1C4C7227A3F0A00C6F139 /* AppDelegate.swift */; };
-		91E1C4CA227A3F0A00C6F139 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E1C4C9227A3F0A00C6F139 /* MainViewController.swift */; };
+		91E1C4CA227A3F0A00C6F139 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E1C4C9227A3F0A00C6F139 /* SceneViewController.swift */; };
 		91E1C4CD227A3F0A00C6F139 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91E1C4CB227A3F0A00C6F139 /* Main.storyboard */; };
 		91E1C4CF227A3F0C00C6F139 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E1C4CE227A3F0C00C6F139 /* Assets.xcassets */; };
 		91E1C4D2227A3F0C00C6F139 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91E1C4D0227A3F0C00C6F139 /* LaunchScreen.storyboard */; };
@@ -21,9 +28,16 @@
 /* Begin PBXFileReference section */
 		91BDA2B1227C8F1A00FC1932 /* DrawingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingOptionsViewController.swift; sourceTree = "<group>"; };
 		91BDA2B3227C8F5600FC1932 /* DrawingOptionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawingOptionsViewController.xib; sourceTree = "<group>"; };
+		91BDA2B6227CD18000FC1932 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		91BDA2B8227CD23300FC1932 /* SceneProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneProcessing.swift; sourceTree = "<group>"; };
+		91BDA2BA227CD24F00FC1932 /* SceneInteracting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneInteracting.swift; sourceTree = "<group>"; };
+		91BDA2BC227CD29300FC1932 /* SceneViewController+Updating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneViewController+Updating.swift"; sourceTree = "<group>"; };
+		91BDA2BE227CD31700FC1932 /* SceneViewController+Interacting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneViewController+Interacting.swift"; sourceTree = "<group>"; };
+		91BDA2C2227CD80A00FC1932 /* SceneRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneRouting.swift; sourceTree = "<group>"; };
+		91BDA2C4227CD91100FC1932 /* SceneState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneState.swift; sourceTree = "<group>"; };
 		91E1C4C4227A3F0A00C6F139 /* DrawingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91E1C4C7227A3F0A00C6F139 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		91E1C4C9227A3F0A00C6F139 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		91E1C4C9227A3F0A00C6F139 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
 		91E1C4CC227A3F0A00C6F139 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		91E1C4CE227A3F0C00C6F139 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		91E1C4D1227A3F0C00C6F139 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -43,6 +57,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		91BDA2B5227CD10700FC1932 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				91BDA2C4227CD91100FC1932 /* SceneState.swift */,
+				91BDA2B8227CD23300FC1932 /* SceneProcessing.swift */,
+				91BDA2BA227CD24F00FC1932 /* SceneInteracting.swift */,
+				91BDA2C2227CD80A00FC1932 /* SceneRouting.swift */,
+				91E1C4C9227A3F0A00C6F139 /* SceneViewController.swift */,
+				91BDA2BC227CD29300FC1932 /* SceneViewController+Updating.swift */,
+				91BDA2BE227CD31700FC1932 /* SceneViewController+Interacting.swift */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		91BDA2C0227CD3F800FC1932 /* DrawingOptions */ = {
+			isa = PBXGroup;
+			children = (
+				91BDA2B1227C8F1A00FC1932 /* DrawingOptionsViewController.swift */,
+				91BDA2B3227C8F5600FC1932 /* DrawingOptionsViewController.xib */,
+			);
+			path = DrawingOptions;
+			sourceTree = "<group>";
+		};
+		91BDA2C1227CD49F00FC1932 /* Browser */ = {
+			isa = PBXGroup;
+			children = (
+				91E1C4D9227A3F8500C6F139 /* BrowserViewController.swift */,
+			);
+			path = Browser;
+			sourceTree = "<group>";
+		};
 		91E1C4BB227A3F0A00C6F139 = {
 			isa = PBXGroup;
 			children = (
@@ -62,12 +107,12 @@
 		91E1C4C6227A3F0A00C6F139 /* DrawingApp */ = {
 			isa = PBXGroup;
 			children = (
+				91BDA2B5227CD10700FC1932 /* Scene */,
+				91BDA2C0227CD3F800FC1932 /* DrawingOptions */,
+				91BDA2C1227CD49F00FC1932 /* Browser */,
+				91BDA2B6227CD18000FC1932 /* Types.swift */,
 				91E1C4EB227C445300C6F139 /* WhiteboardView.swift */,
 				91E1C4C7227A3F0A00C6F139 /* AppDelegate.swift */,
-				91E1C4D9227A3F8500C6F139 /* BrowserViewController.swift */,
-				91E1C4C9227A3F0A00C6F139 /* MainViewController.swift */,
-				91BDA2B1227C8F1A00FC1932 /* DrawingOptionsViewController.swift */,
-				91BDA2B3227C8F5600FC1932 /* DrawingOptionsViewController.xib */,
 				91E1C4CB227A3F0A00C6F139 /* Main.storyboard */,
 				91E1C4CE227A3F0C00C6F139 /* Assets.xcassets */,
 				91E1C4D0227A3F0C00C6F139 /* LaunchScreen.storyboard */,
@@ -148,11 +193,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91E1C4CA227A3F0A00C6F139 /* MainViewController.swift in Sources */,
+				91BDA2B9227CD23300FC1932 /* SceneProcessing.swift in Sources */,
+				91BDA2BD227CD29300FC1932 /* SceneViewController+Updating.swift in Sources */,
+				91E1C4CA227A3F0A00C6F139 /* SceneViewController.swift in Sources */,
 				91E1C4ED227C445300C6F139 /* WhiteboardView.swift in Sources */,
 				91E1C4DA227A3F8500C6F139 /* BrowserViewController.swift in Sources */,
+				91BDA2B7227CD18000FC1932 /* Types.swift in Sources */,
+				91BDA2C3227CD80A00FC1932 /* SceneRouting.swift in Sources */,
 				91BDA2B2227C8F1A00FC1932 /* DrawingOptionsViewController.swift in Sources */,
+				91BDA2C5227CD91100FC1932 /* SceneState.swift in Sources */,
 				91E1C4C8227A3F0A00C6F139 /* AppDelegate.swift in Sources */,
+				91BDA2BF227CD31700FC1932 /* SceneViewController+Interacting.swift in Sources */,
+				91BDA2BB227CD24F00FC1932 /* SceneInteracting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
