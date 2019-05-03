@@ -17,22 +17,23 @@ protocol WhiteboardViewDelegate {
 
 class WhiteboardView: UIView {
 
-    var lineWidth: Double
-    var strokeColor: UIColor
+    var lineWidth: Double = 4
+    var strokeColor = UIColor.darkGray
+    var whiteboardBackgroundColor = UIColor.white {
+        didSet {
+            backgroundColor = whiteboardBackgroundColor
+        }
+    }
 
     var delegate: WhiteboardViewDelegate?
 
     private var currentShape: Shape?
 
     override init(frame: CGRect) {
-        lineWidth = 4
-        strokeColor = UIColor.darkGray
         super.init(frame: frame)
     }
 
     required init?(coder aDecoder: NSCoder) {
-        lineWidth = 4
-        strokeColor = UIColor.darkGray
         super.init(coder: aDecoder)
     }
 

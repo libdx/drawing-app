@@ -17,15 +17,49 @@ struct Shape {
 /////
 
 struct SceneState {
-    var shapes: [Shape]
-//    var
+//    var shapes: [Shape]
+    var lineWidth: Double = 4
 }
 
-protocol SceneDisplaying {
-
+protocol SceneProcessing {
+    func applyOptionsChanges(_ options: DrawingOptions) -> SceneState
 }
 
-class MainViewController: UIViewController {
+extension SceneProcessing where Self: SceneDisplaying {
+    func applyOptionsChanges(_ options: DrawingOptions) -> SceneState {
+        var state = self.state
+        state.lineWidth = options.lineWidth
+        return state
+    }
+}
+
+protocol SceneInteracting {
+    var ui: SceneDisplaying? { get }
+
+    func uiDidChangeOptions(_ options: DrawingOptions)
+}
+
+extension SceneInteracting where Self: SceneDisplaying {
+    var ui: SceneDisplaying? {
+        return self
+    }
+}
+
+extension SceneInteracting where Self: SceneProcessing {
+    func uiDidChangeOptions(_ options: DrawingOptions) {
+        ui?.state = applyOptionsChanges(options)
+    }
+}
+
+protocol SceneDisplaying: class {
+    var state: SceneState { get set }
+}
+
+protocol SceneDisplayUpdating {
+    func update(with state: SceneState)
+}
+
+class MainViewController: UIViewController, SceneDisplaying {
 
     @IBOutlet var whiteboardView: WhiteboardView!
     @IBOutlet var editItem: UIBarButtonItem!
@@ -33,13 +67,27 @@ class MainViewController: UIViewController {
     var optionsController: UIViewController!
     var whiteboardDelegate = WhiteboardShapeDelegate()
 
+    var state = SceneState() {
+        willSet {
+            update(with: newValue)
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        optionsController = UIViewController()
+        let drawingController = DrawingOptionsViewController()
+        drawingController.delegate = self
+        optionsController = drawingController
         optionsController.modalPresentationStyle = .popover
         whiteboardView.delegate = whiteboardDelegate
         editItem.target = self
         editItem.action = #selector(editDidTap)
+    }
+}
+
+extension MainViewController: SceneDisplayUpdating {
+    func update(with state: SceneState) {
+        whiteboardView.lineWidth = state.lineWidth
     }
 }
 
@@ -55,3 +103,11 @@ extension MainViewController: UIToolbarDelegate {
         return .topAttached
     }
 }
+
+extension MainViewController: DrawingOptionsDelegate {
+    func optionsDidChanges(_ controller: DrawingOptionsViewController, options: DrawingOptions) {
+        uiDidChangeOptions(options)
+    }
+}
+
+extension MainViewController: SceneInteracting, SceneProcessing {}
