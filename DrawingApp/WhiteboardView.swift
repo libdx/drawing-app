@@ -60,6 +60,7 @@ class WhiteboardView: UIView {
 
         ctx.setLineWidth(CGFloat(shape.width))
         ctx.setStrokeColor(shape.strokeColor)
+        ctx.setLineCap(.round)
         ctx.move(to: first)
         for point in rest {
             ctx.addLine(to: point)

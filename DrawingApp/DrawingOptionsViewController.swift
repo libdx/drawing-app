@@ -8,8 +8,9 @@
 
 import UIKit
 
-struct DrawingOptions {
-    var lineWidth: Double
+struct DrawingOptions: Codable {
+    static let lineWidthRatio: Double = 20
+    var lineWidth: Double = 4
 }
 
 protocol DrawingOptionsDelegate: class {
@@ -24,13 +25,13 @@ class DrawingOptionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         slider.addTarget(self, action: #selector(sliderDidChange), for: .valueChanged)
-        slider.value = Float(SceneState().lineWidth / 20)
+        slider.value = Float(DrawingOptions().lineWidth / DrawingOptions.lineWidthRatio)
     }
 }
 
 extension DrawingOptionsViewController {
     @IBAction @objc func sliderDidChange() {
-        let lineWidth = Double(slider.value * 20)
+        let lineWidth = Double(slider.value) * DrawingOptions.lineWidthRatio
         let options = DrawingOptions(lineWidth: lineWidth)
         delegate?.optionsDidChanges(self, options: options)
     }

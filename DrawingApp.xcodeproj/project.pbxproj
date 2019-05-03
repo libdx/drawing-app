@@ -15,7 +15,6 @@
 		91E1C4CF227A3F0C00C6F139 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91E1C4CE227A3F0C00C6F139 /* Assets.xcassets */; };
 		91E1C4D2227A3F0C00C6F139 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91E1C4D0227A3F0C00C6F139 /* LaunchScreen.storyboard */; };
 		91E1C4DA227A3F8500C6F139 /* BrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E1C4D9227A3F8500C6F139 /* BrowserViewController.swift */; };
-		91E1C4EC227C445300C6F139 /* WhiteboardShapeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E1C4EA227C445200C6F139 /* WhiteboardShapeDelegate.swift */; };
 		91E1C4ED227C445300C6F139 /* WhiteboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E1C4EB227C445300C6F139 /* WhiteboardView.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +29,6 @@
 		91E1C4D1227A3F0C00C6F139 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		91E1C4D3227A3F0C00C6F139 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		91E1C4D9227A3F8500C6F139 /* BrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserViewController.swift; sourceTree = "<group>"; };
-		91E1C4EA227C445200C6F139 /* WhiteboardShapeDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhiteboardShapeDelegate.swift; sourceTree = "<group>"; };
 		91E1C4EB227C445300C6F139 /* WhiteboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhiteboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,7 +62,6 @@
 		91E1C4C6227A3F0A00C6F139 /* DrawingApp */ = {
 			isa = PBXGroup;
 			children = (
-				91E1C4EA227C445200C6F139 /* WhiteboardShapeDelegate.swift */,
 				91E1C4EB227C445300C6F139 /* WhiteboardView.swift */,
 				91E1C4C7227A3F0A00C6F139 /* AppDelegate.swift */,
 				91E1C4D9227A3F8500C6F139 /* BrowserViewController.swift */,
@@ -153,7 +150,6 @@
 			files = (
 				91E1C4CA227A3F0A00C6F139 /* MainViewController.swift in Sources */,
 				91E1C4ED227C445300C6F139 /* WhiteboardView.swift in Sources */,
-				91E1C4EC227C445300C6F139 /* WhiteboardShapeDelegate.swift in Sources */,
 				91E1C4DA227A3F8500C6F139 /* BrowserViewController.swift in Sources */,
 				91BDA2B2227C8F1A00FC1932 /* DrawingOptionsViewController.swift in Sources */,
 				91E1C4C8227A3F0A00C6F139 /* AppDelegate.swift in Sources */,

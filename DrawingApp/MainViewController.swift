@@ -17,55 +17,71 @@ struct Shape {
 /////
 
 struct SceneState {
-//    var shapes: [Shape]
-    var lineWidth: Double = 4
+    var shapes: [Shape] = []
+    var drawingOptions = DrawingOptions()
 }
 
 protocol SceneProcessing {
-    func applyOptionsChanges(_ options: DrawingOptions) -> SceneState
+    func changeDrawingOptions(_ options: DrawingOptions) -> SceneState
+    func addNewShape(_ shape: Shape) -> SceneState
 }
 
-extension SceneProcessing where Self: SceneDisplaying {
-    func applyOptionsChanges(_ options: DrawingOptions) -> SceneState {
+extension SceneProcessing where Self: SceneStateDisplaying {
+    func changeDrawingOptions(_ options: DrawingOptions) -> SceneState {
         var state = self.state
-        state.lineWidth = options.lineWidth
+        state.drawingOptions = options
+        return state
+    }
+
+    func addNewShape(_ shape: Shape) -> SceneState {
+        var state = self.state
+        state.shapes.append(shape)
         return state
     }
 }
 
 protocol SceneInteracting {
-    var ui: SceneDisplaying? { get }
+    var ui: SceneStateDisplaying? { get }
 
+    func uiDidLoad()
     func uiDidChangeOptions(_ options: DrawingOptions)
+    func uiDidAddNewShape(_ shape: Shape)
 }
 
-extension SceneInteracting where Self: SceneDisplaying {
-    var ui: SceneDisplaying? {
+extension SceneInteracting where Self: SceneStateDisplaying {
+    var ui: SceneStateDisplaying? {
         return self
     }
 }
 
 extension SceneInteracting where Self: SceneProcessing {
+    func uiDidLoad() {
+        ui?.state = SceneState()
+    }
+
     func uiDidChangeOptions(_ options: DrawingOptions) {
-        ui?.state = applyOptionsChanges(options)
+        ui?.state = changeDrawingOptions(options)
+    }
+
+    func uiDidAddNewShape(_ shape: Shape) {
+        ui?.state = addNewShape(shape)
     }
 }
 
-protocol SceneDisplaying: class {
+protocol SceneStateDisplaying: class {
     var state: SceneState { get set }
 }
 
-protocol SceneDisplayUpdating {
+protocol SceneStateUpdating {
     func update(with state: SceneState)
 }
 
-class MainViewController: UIViewController, SceneDisplaying {
+class MainViewController: UIViewController, SceneStateDisplaying {
 
     @IBOutlet var whiteboardView: WhiteboardView!
     @IBOutlet var editItem: UIBarButtonItem!
 
     var optionsController: UIViewController!
-    var whiteboardDelegate = WhiteboardShapeDelegate()
 
     var state = SceneState() {
         willSet {
@@ -79,15 +95,21 @@ class MainViewController: UIViewController, SceneDisplaying {
         drawingController.delegate = self
         optionsController = drawingController
         optionsController.modalPresentationStyle = .popover
-        whiteboardView.delegate = whiteboardDelegate
+        whiteboardView.delegate = self
         editItem.target = self
         editItem.action = #selector(editDidTap)
     }
 }
 
-extension MainViewController: SceneDisplayUpdating {
+extension WhiteboardView {
+    func update(with options: DrawingOptions) {
+        lineWidth = options.lineWidth
+    }
+}
+
+extension MainViewController: SceneStateUpdating {
     func update(with state: SceneState) {
-        whiteboardView.lineWidth = state.lineWidth
+        whiteboardView.update(with: state.drawingOptions)
     }
 }
 
@@ -107,6 +129,21 @@ extension MainViewController: UIToolbarDelegate {
 extension MainViewController: DrawingOptionsDelegate {
     func optionsDidChanges(_ controller: DrawingOptionsViewController, options: DrawingOptions) {
         uiDidChangeOptions(options)
+    }
+}
+
+extension MainViewController: WhiteboardViewDelegate {
+    func numberOfShapes(whiteboard: WhiteboardView) -> Int {
+        return state.shapes.count
+    }
+
+    func shapeAt(whiteboard: WhiteboardView, index: Int) -> Shape {
+        return state.shapes[index]
+    }
+
+    func hasNewShape(whiteboard: WhiteboardView, shape: Shape) {
+        uiDidAddNewShape(shape)
+        whiteboard.setNeedsDisplay()
     }
 }
 
