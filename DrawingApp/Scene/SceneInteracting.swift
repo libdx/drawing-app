@@ -34,6 +34,7 @@ extension SceneInteracting where Self: SceneProcessing {
 
     func uiDidAddNewShape(_ shape: Shape) {
         ui?.state = addNewShape(shape)
+        print(ui!.state.shapes.count)
     }
 }
 

@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DrawingOptionsViewController" customModule="DrawingApp" customModuleProvider="target">
             <connections>
+                <outlet property="segmentedControl" destination="lVP-2J-gzM" id="ADk-JV-dX0"/>
                 <outlet property="slider" destination="ten-NM-LAl" id="d9x-sP-7HV"/>
                 <outlet property="view" destination="iN0-l3-epB" id="LSK-LV-E3q"/>
             </connections>
@@ -32,15 +33,24 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </slider>
                             </subviews>
-                            <color key="backgroundColor" red="1" green="0.49327188729999999" blue="0.47399842739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="60" id="JDx-g4-Mga"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xof-8F-gd6">
                             <rect key="frame" x="0.0" y="60" width="382" height="60"/>
-                            <color key="backgroundColor" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lVP-2J-gzM">
+                                    <rect key="frame" x="142.5" y="16" width="97" height="29"/>
+                                    <segments>
+                                        <segment title="Draw"/>
+                                        <segment title="Erase"/>
+                                    </segments>
+                                </segmentedControl>
+                            </subviews>
                             <constraints>
+                                <constraint firstItem="lVP-2J-gzM" firstAttribute="centerY" secondItem="Xof-8F-gd6" secondAttribute="centerY" id="7q8-Qd-pLm"/>
+                                <constraint firstItem="lVP-2J-gzM" firstAttribute="centerX" secondItem="Xof-8F-gd6" secondAttribute="centerX" id="ONU-sB-AZS"/>
                                 <constraint firstAttribute="height" constant="60" id="n1J-fN-nKw"/>
                             </constraints>
                         </view>

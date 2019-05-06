@@ -15,13 +15,18 @@ protocol WhiteboardViewDelegate {
     func didCreateShape(whiteboard: WhiteboardView, shape: Shape)
 }
 
+struct WhiteboardDrawingOptions {
+    var lineWidth: CGFloat = 4
+    var strokeColor = UIColor.darkGray
+    var backgroundColor = UIColor.white
+    var shapeType: Shape.Type = Stroke.self
+}
+
 class WhiteboardView: UIView {
 
-    var lineWidth: Double = 4
-    var strokeColor = UIColor.darkGray
-    var whiteboardBackgroundColor = UIColor.white {
+    var options = WhiteboardDrawingOptions() {
         didSet {
-            backgroundColor = whiteboardBackgroundColor
+            backgroundColor = options.backgroundColor
         }
     }
 
@@ -51,21 +56,23 @@ class WhiteboardView: UIView {
     }
 
     func drawShape(_ shape: Shape) {
-        guard let ctx = UIGraphicsGetCurrentContext() else {
+        guard let context = UIGraphicsGetCurrentContext() else {
             return
         }
 
-        let first = shape.points[0]
-        let rest = shape.points[1 ..< shape.points.count]
+        shape.draw(in: context, with: options)
 
-        ctx.setLineWidth(CGFloat(shape.width))
-        ctx.setStrokeColor(shape.strokeColor)
-        ctx.setLineCap(.round)
-        ctx.move(to: first)
-        for point in rest {
-            ctx.addLine(to: point)
-        }
-        ctx.strokePath()
+//        let first = shape.points[0]
+//        let rest = shape.points[1 ..< shape.points.count]
+//
+//        ctx.setLineWidth(CGFloat(shape.width))
+//        ctx.setStrokeColor(shape.strokeColor)
+//        ctx.setLineCap(.round)
+//        ctx.move(to: first)
+//        for point in rest {
+//            ctx.addLine(to: point)
+//        }
+//        ctx.strokePath()
     }
 
     override func draw(_ rect: CGRect) {
@@ -77,10 +84,9 @@ class WhiteboardView: UIView {
 
         let location: CGPoint = touch.location(in: self)
 
-        currentShape = Shape(
+        currentShape = options.shapeType.init(
             points: [location],
-            width: self.lineWidth,
-            strokeColor: self.strokeColor.cgColor
+            options: options
         )
     }
 
@@ -90,7 +96,7 @@ class WhiteboardView: UIView {
         let location: CGPoint = touch.location(in: self)
 
         // TODO: we may want to skip some locations (?)
-        currentShape?.points.append(location)
+        currentShape?.append(point: location)
 
         // we need to draw current shape
         setNeedsDisplay()

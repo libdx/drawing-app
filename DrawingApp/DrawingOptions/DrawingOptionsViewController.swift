@@ -21,10 +21,17 @@ import UIKit
 //}
 
 struct DrawingOptions {
+
+    enum Tool: Int {
+        case draw
+        case erase
+    }
+
     static let lineWidthRatio: Double = 20
 
     var lineWidth: Double = 4
     var backgroundColor = UIColor.white
+    var selectedTool: Tool = .draw
 }
 
 extension DrawingOptions {
@@ -41,19 +48,33 @@ class DrawingOptionsViewController: UIViewController {
     weak var delegate: DrawingOptionsDelegate?
 
     @IBOutlet var slider: UISlider!
+    @IBOutlet var segmentedControl: UISegmentedControl!
+
+    var drawingOptions = DrawingOptions()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         slider.addTarget(self, action: #selector(sliderDidChange), for: .valueChanged)
+        segmentedControl.addTarget(self, action: #selector(toolDidChange), for: .valueChanged)
         slider.value = DrawingOptions().sliderValue
+        segmentedControl.selectedSegmentIndex = drawingOptions.selectedTool.rawValue
     }
 }
 
 extension DrawingOptionsViewController {
     @IBAction @objc func sliderDidChange() {
         let lineWidth = Double(slider.value) * DrawingOptions.lineWidthRatio
-        var options = DrawingOptions()
-        options.lineWidth = lineWidth
-        delegate?.optionsDidChanges(self, options: options)
+
+        drawingOptions.lineWidth = lineWidth
+        delegate?.optionsDidChanges(self, options: drawingOptions)
+    }
+
+    @IBAction @objc func toolDidChange() {
+        let index = segmentedControl.selectedSegmentIndex
+
+        if let tool = DrawingOptions.Tool(rawValue: index) {
+            drawingOptions.selectedTool = tool
+            delegate?.optionsDidChanges(self, options: drawingOptions)
+        }
     }
 }
