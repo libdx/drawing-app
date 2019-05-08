@@ -8,52 +8,72 @@
 
 import Foundation
 import CoreGraphics
+import UIKit
 
-//enum ShapeKind {
-//    case stroke
-//    case eraser
-//    case pattern
-//    case image
-//}
+struct LineDash {
+    var phase: CGFloat
+    var lengths: [CGFloat]
+}
+
+extension LineDash {
+    static let solid = LineDash(phase: 0, lengths: [0])
+    static let dashDot = LineDash(phase: 0, lengths: [10, 10, 1])
+    static let dash = LineDash(phase: 0, lengths: [20])
+}
+
+struct GraphicsOptions {
+    var lineWidth: CGFloat = 10
+    var strokeColor = UIColor.darkGray.cgColor
+    var lineDash = LineDash.solid
+}
 
 protocol Shape {
-    init(points: [CGPoint], options: WhiteboardDrawingOptions)
-    func draw(in context: CGContext, with options: WhiteboardDrawingOptions)
+    init(points: [CGPoint], options: GraphicsOptions)
+    func draw(in context: CGContext, with options: WhiteboardView.Options)
     mutating func append(point: CGPoint)
 }
 
-//struct Color {
-//    var red: UInt8
-//    var green: UInt8
-//    var blue: UInt8
-//    var alpha: Float
-//}
+extension Shape {
+    init(_ options: GraphicsOptions) {
+        self.init(points: [], options: options)
+    }
+}
 
 struct Stroke {
-    var points: [CGPoint]
-    var width: CGFloat
-    var color: CGColor
+    var points: [CGPoint] = []
+    var width: CGFloat = 10
+    var color: CGColor = UIColor.darkGray.cgColor
+}
+
+struct Eraser {
+    var stroke: Stroke
+}
+
+struct DashedStroke {
+    var lineDash = LineDash.solid
+    var stroke: Stroke
 }
 
 // TODO: move conformances to `Shape` into separate directory and file
 extension Stroke: Shape {
-    init(points: [CGPoint], options: WhiteboardDrawingOptions) {
+    init(points: [CGPoint], options: GraphicsOptions) {
         self.points = points
         width = options.lineWidth
-        color = options.strokeColor.cgColor
+        color = options.strokeColor
     }
 
     mutating func append(point: CGPoint) {
         points.append(point)
     }
 
-    func draw(in context: CGContext, with options: WhiteboardDrawingOptions) {
-        let first = points[0]
-        let rest = points[1 ..< points.count]
-
+    func draw(in context: CGContext, with options: WhiteboardView.Options) {
         context.setLineWidth(CGFloat(width))
         context.setStrokeColor(color)
         context.setLineCap(.round)
+
+        let first = points[0]
+        let rest = points[1 ..< points.count]
+
         context.move(to: first)
         for point in rest {
             context.addLine(to: point)
@@ -62,14 +82,8 @@ extension Stroke: Shape {
     }
 }
 
-// ctx.setLineDash(phase: 0, lengths: [10]) // [10, 10, 1]
-
-struct Eraser {
-    var stroke: Stroke
-}
-
 extension Eraser: Shape {
-    init(points: [CGPoint], options: WhiteboardDrawingOptions) {
+    init(points: [CGPoint], options: GraphicsOptions) {
         stroke = Stroke(points: points, options: options)
     }
 
@@ -77,17 +91,25 @@ extension Eraser: Shape {
         stroke.append(point: point)
     }
 
-    func draw(in context: CGContext, with options: WhiteboardDrawingOptions) {
+    func draw(in context: CGContext, with options: WhiteboardView.Options) {
         var stroke = self.stroke
         stroke.color = options.backgroundColor.cgColor
         stroke.draw(in: context, with: options)
     }
 }
 
-//struct Shape {
-//    var points: [CGPoint]
-//    var width: Double
-//    var strokeColor: CGColor
-//}
+extension DashedStroke: Shape {
+    init(points: [CGPoint], options: GraphicsOptions) {
+        stroke = Stroke(points: points, options: options)
+        lineDash = options.lineDash
+    }
 
+    mutating func append(point: CGPoint) {
+        stroke.append(point: point)
+    }
 
+    func draw(in context: CGContext, with options: WhiteboardView.Options) {
+        context.setLineDash(phase: lineDash.phase, lengths: lineDash.lengths)
+        stroke.draw(in: context, with: options)
+    }
+}

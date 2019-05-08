@@ -8,24 +8,6 @@
 
 import UIKit
 
-extension DrawingOptions {
-    var whiteboardShapeType: Shape.Type {
-        switch selectedTool {
-        case .draw:
-            return Stroke.self
-        case .erase:
-            return Eraser.self
-        }
-    }
-}
-
-extension WhiteboardDrawingOptions {
-    mutating func update(with drawingOptions: DrawingOptions) {
-        lineWidth = CGFloat(drawingOptions.lineWidth)
-        shapeType = drawingOptions.whiteboardShapeType
-    }
-}
-
 protocol ScenePopoverSupport {
     var editItem: UIBarButtonItem! { get }
     var optionsController: UIViewController! { get }

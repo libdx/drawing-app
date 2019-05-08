@@ -8,30 +8,58 @@
 
 import UIKit
 
-//struct DrawingOptionsState {
-//    var options = DrawingOptions()
-//}
+protocol DrawingTool {
+    var title: String { get }
+    var shapeType: Shape.Type { get }
+}
 
-//protocol DrawingOptionsProcessing {
-//    func changeDrawingOptions(_ options: DrawingOptions) -> DrawingOptionsState
-//}
-//
-//protocol DrawingOptionsInteracting {
-//    func uiDidChangeOptions(_ options: DrawingOptions)
-//}
+class DrawTool: DrawingTool {
+    var title: String {
+        return "Draw"
+    }
+
+    var shapeType: Shape.Type {
+        return Stroke.self
+    }
+}
+
+class DashesTool: DrawingTool {
+    var title: String {
+        return "Dashes"
+    }
+
+    var shapeType: Shape.Type {
+        return DashedStroke.self
+    }
+}
+
+class EraseTool: DrawingTool {
+    var title: String {
+        return "Erase"
+    }
+
+    var shapeType: Shape.Type {
+        return Eraser.self
+    }
+}
 
 struct DrawingOptions {
 
-    enum Tool: Int {
-        case draw
-        case erase
+    static let allTools: [DrawingTool] = [
+        DrawTool(), DashesTool(), EraseTool()
+    ]
+
+    static let lineWidthRatio: CGFloat = 40
+
+    var lineWidth: CGFloat = 10
+    var strokeColor = UIColor.darkGray
+    var backgroundColor = UIColor.white
+    var lineDash = LineDash.dash
+    var selectedTool: DrawingTool {
+        return DrawingOptions.allTools[selectedToolIndex]
     }
 
-    static let lineWidthRatio: Double = 20
-
-    var lineWidth: Double = 4
-    var backgroundColor = UIColor.white
-    var selectedTool: Tool = .draw
+    fileprivate var selectedToolIndex: Int = 0
 }
 
 extension DrawingOptions {
@@ -56,14 +84,21 @@ class DrawingOptionsViewController: UIViewController {
         super.viewDidLoad()
         slider.addTarget(self, action: #selector(sliderDidChange), for: .valueChanged)
         segmentedControl.addTarget(self, action: #selector(toolDidChange), for: .valueChanged)
-        slider.value = DrawingOptions().sliderValue
-        segmentedControl.selectedSegmentIndex = drawingOptions.selectedTool.rawValue
+        slider.value = drawingOptions.sliderValue
+
+    }
+
+    private func setupSegmentedControl() {
+        for (index, tool) in DrawingOptions.allTools.enumerated() {
+            segmentedControl.setTitle(tool.title, forSegmentAt: index)
+        }
+        segmentedControl.selectedSegmentIndex = drawingOptions.selectedToolIndex
     }
 }
 
 extension DrawingOptionsViewController {
     @IBAction @objc func sliderDidChange() {
-        let lineWidth = Double(slider.value) * DrawingOptions.lineWidthRatio
+        let lineWidth = CGFloat(slider.value) * DrawingOptions.lineWidthRatio
 
         drawingOptions.lineWidth = lineWidth
         delegate?.optionsDidChanges(self, options: drawingOptions)
@@ -72,9 +107,7 @@ extension DrawingOptionsViewController {
     @IBAction @objc func toolDidChange() {
         let index = segmentedControl.selectedSegmentIndex
 
-        if let tool = DrawingOptions.Tool(rawValue: index) {
-            drawingOptions.selectedTool = tool
-            delegate?.optionsDidChanges(self, options: drawingOptions)
-        }
+        drawingOptions.selectedToolIndex = index
+        delegate?.optionsDidChanges(self, options: drawingOptions)
     }
 }

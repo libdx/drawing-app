@@ -15,16 +15,15 @@ protocol WhiteboardViewDelegate {
     func didCreateShape(whiteboard: WhiteboardView, shape: Shape)
 }
 
-struct WhiteboardDrawingOptions {
-    var lineWidth: CGFloat = 4
-    var strokeColor = UIColor.darkGray
-    var backgroundColor = UIColor.white
-    var shapeType: Shape.Type = Stroke.self
-}
-
 class WhiteboardView: UIView {
 
-    var options = WhiteboardDrawingOptions() {
+    struct Options {
+        var shapeType: Shape.Type = Stroke.self
+        var graphicsOptions = GraphicsOptions()
+        var backgroundColor = UIColor.white
+    }
+
+    var options = Options() {
         didSet {
             backgroundColor = options.backgroundColor
         }
@@ -43,7 +42,7 @@ class WhiteboardView: UIView {
     }
 
     func drawShapes() {
-        if let count = delegate?.numberOfShapes(whiteboard: self){
+        if let count = delegate?.numberOfShapes(whiteboard: self) {
             for i in 0 ..< count {
                 if let shape = self.delegate?.shapeAt(whiteboard: self, index: i) {
                     drawShape(shape)
@@ -60,19 +59,9 @@ class WhiteboardView: UIView {
             return
         }
 
+        context.saveGState()
         shape.draw(in: context, with: options)
-
-//        let first = shape.points[0]
-//        let rest = shape.points[1 ..< shape.points.count]
-//
-//        ctx.setLineWidth(CGFloat(shape.width))
-//        ctx.setStrokeColor(shape.strokeColor)
-//        ctx.setLineCap(.round)
-//        ctx.move(to: first)
-//        for point in rest {
-//            ctx.addLine(to: point)
-//        }
-//        ctx.strokePath()
+        context.restoreGState()
     }
 
     override func draw(_ rect: CGRect) {
@@ -86,7 +75,7 @@ class WhiteboardView: UIView {
 
         currentShape = options.shapeType.init(
             points: [location],
-            options: options
+            options: options.graphicsOptions
         )
     }
 

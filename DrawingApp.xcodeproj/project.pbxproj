@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9163501E2282216D0088F1EA /* WhiteboardView+Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9163501D2282216D0088F1EA /* WhiteboardView+Scene.swift */; };
 		91BDA2B2227C8F1A00FC1932 /* DrawingOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BDA2B1227C8F1A00FC1932 /* DrawingOptionsViewController.swift */; };
 		91BDA2B4227C8F5600FC1932 /* DrawingOptionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 91BDA2B3227C8F5600FC1932 /* DrawingOptionsViewController.xib */; };
 		91BDA2B7227CD18000FC1932 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BDA2B6227CD18000FC1932 /* Types.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9163501D2282216D0088F1EA /* WhiteboardView+Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WhiteboardView+Scene.swift"; sourceTree = "<group>"; };
 		91BDA2B1227C8F1A00FC1932 /* DrawingOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingOptionsViewController.swift; sourceTree = "<group>"; };
 		91BDA2B3227C8F5600FC1932 /* DrawingOptionsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DrawingOptionsViewController.xib; sourceTree = "<group>"; };
 		91BDA2B6227CD18000FC1932 /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9163501F2282280F0088F1EA /* Whiteboard */ = {
+			isa = PBXGroup;
+			children = (
+				91E1C4EB227C445300C6F139 /* WhiteboardView.swift */,
+			);
+			path = Whiteboard;
+			sourceTree = "<group>";
+		};
 		91BDA2B5227CD10700FC1932 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +77,7 @@
 				91E1C4C9227A3F0A00C6F139 /* SceneViewController.swift */,
 				91BDA2BC227CD29300FC1932 /* SceneViewController+Updating.swift */,
 				91BDA2BE227CD31700FC1932 /* SceneViewController+Interacting.swift */,
+				9163501D2282216D0088F1EA /* WhiteboardView+Scene.swift */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -111,7 +122,7 @@
 				91BDA2C0227CD3F800FC1932 /* DrawingOptions */,
 				91BDA2C1227CD49F00FC1932 /* Browser */,
 				91BDA2B6227CD18000FC1932 /* Types.swift */,
-				91E1C4EB227C445300C6F139 /* WhiteboardView.swift */,
+				9163501F2282280F0088F1EA /* Whiteboard */,
 				91E1C4C7227A3F0A00C6F139 /* AppDelegate.swift */,
 				91E1C4CB227A3F0A00C6F139 /* Main.storyboard */,
 				91E1C4CE227A3F0C00C6F139 /* Assets.xcassets */,
@@ -196,6 +207,7 @@
 				91BDA2B9227CD23300FC1932 /* SceneProcessing.swift in Sources */,
 				91BDA2BD227CD29300FC1932 /* SceneViewController+Updating.swift in Sources */,
 				91E1C4CA227A3F0A00C6F139 /* SceneViewController.swift in Sources */,
+				9163501E2282216D0088F1EA /* WhiteboardView+Scene.swift in Sources */,
 				91E1C4ED227C445300C6F139 /* WhiteboardView.swift in Sources */,
 				91E1C4DA227A3F8500C6F139 /* BrowserViewController.swift in Sources */,
 				91BDA2B7227CD18000FC1932 /* Types.swift in Sources */,

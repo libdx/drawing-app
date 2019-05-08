@@ -10,7 +10,7 @@ import UIKit
 
 extension SceneViewController: SceneStateUpdating {
     func update(with state: SceneState) {
-        whiteboardView.options.update(with: state.drawingOptions)
+        whiteboardView.options = WhiteboardView.Options(state.drawingOptions)
     }
 }
 

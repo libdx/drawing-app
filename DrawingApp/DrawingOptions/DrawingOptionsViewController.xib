@@ -41,9 +41,10 @@
                             <rect key="frame" x="0.0" y="60" width="382" height="60"/>
                             <subviews>
                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lVP-2J-gzM">
-                                    <rect key="frame" x="142.5" y="16" width="97" height="29"/>
+                                    <rect key="frame" x="101.5" y="16" width="179" height="29"/>
                                     <segments>
                                         <segment title="Draw"/>
+                                        <segment title="Dashes"/>
                                         <segment title="Erase"/>
                                     </segments>
                                 </segmentedControl>
