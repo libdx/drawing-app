@@ -40,9 +40,9 @@ extension Shape {
 }
 
 struct Stroke {
-    var points: [CGPoint] = []
-    var width: CGFloat = 10
-    var color: CGColor = UIColor.darkGray.cgColor
+    var points: [CGPoint]
+    var width: CGFloat
+    var color: CGColor
 }
 
 struct Eraser {
@@ -50,7 +50,7 @@ struct Eraser {
 }
 
 struct DashedStroke {
-    var lineDash = LineDash.solid
+    var lineDash: LineDash
     var stroke: Stroke
 }
 

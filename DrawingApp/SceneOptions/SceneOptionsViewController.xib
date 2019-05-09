@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DrawingOptionsViewController" customModule="DrawingApp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SceneOptionsViewController" customModule="DrawingApp" customModuleProvider="target">
             <connections>
                 <outlet property="segmentedControl" destination="lVP-2J-gzM" id="ADk-JV-dX0"/>
                 <outlet property="slider" destination="ten-NM-LAl" id="d9x-sP-7HV"/>

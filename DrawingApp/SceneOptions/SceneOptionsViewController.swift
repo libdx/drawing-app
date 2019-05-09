@@ -1,5 +1,5 @@
 //
-//  DrawingOptionsViewController.swift
+//  SceneOptionsViewController.swift
 //  DrawingApp
 //
 //  Created by Oleksandr Ignatenko on 03/05/2019.
@@ -69,10 +69,10 @@ extension DrawingOptions {
 }
 
 protocol DrawingOptionsDelegate: class {
-    func optionsDidChanges(_ controller: DrawingOptionsViewController, options: DrawingOptions)
+    func optionsDidChanges(_ controller: SceneOptionsViewController, options: DrawingOptions)
 }
 
-class DrawingOptionsViewController: UIViewController {
+class SceneOptionsViewController: UIViewController {
     weak var delegate: DrawingOptionsDelegate?
 
     @IBOutlet var slider: UISlider!
@@ -96,7 +96,7 @@ class DrawingOptionsViewController: UIViewController {
     }
 }
 
-extension DrawingOptionsViewController {
+extension SceneOptionsViewController {
     @IBAction @objc func sliderDidChange() {
         let lineWidth = CGFloat(slider.value) * DrawingOptions.lineWidthRatio
 

@@ -27,7 +27,7 @@ class SceneViewController: UIViewController, SceneStateDisplaying, ScenePopoverS
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let drawingController = DrawingOptionsViewController()
+        let drawingController = SceneOptionsViewController()
         drawingController.delegate = self
         let navigationController = UINavigationController(rootViewController: drawingController)
         optionsController = navigationController
