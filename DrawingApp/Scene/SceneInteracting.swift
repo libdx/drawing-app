@@ -15,6 +15,7 @@ protocol SceneInteracting {
     func uiDidTapEdit()
     func uiDidChangeOptions(_ options: DrawingOptions)
     func uiDidAddNewShape(_ shape: Shape)
+    func uiDidTapClear()
 }
 
 extension SceneInteracting where Self: SceneStateDisplaying {
@@ -34,6 +35,10 @@ extension SceneInteracting where Self: SceneProcessing {
 
     func uiDidAddNewShape(_ shape: Shape) {
         ui?.state = addNewShape(shape)
+    }
+
+    func uiDidTapClear() {
+        ui?.state = clearShapes()
     }
 }
 

@@ -20,6 +20,10 @@ extension SceneViewController: SceneOptionsDelegate {
     func optionsDidChanges(_ controller: SceneOptionsViewController, options: DrawingOptions) {
         uiDidChangeOptions(options)
     }
+
+    func didTapClearButton(_ controller: SceneOptionsViewController) {
+        uiDidTapClear()
+    }
 }
 
 extension SceneViewController: WhiteboardViewDelegate {

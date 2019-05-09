@@ -16,6 +16,7 @@ extension DrawingOptions {
 
 protocol SceneOptionsDelegate: class {
     func optionsDidChanges(_ controller: SceneOptionsViewController, options: DrawingOptions)
+    func didTapClearButton(_ controller: SceneOptionsViewController)
 }
 
 class SceneOptionsViewController: UIViewController {
@@ -23,13 +24,23 @@ class SceneOptionsViewController: UIViewController {
 
     @IBOutlet var slider: UISlider!
     @IBOutlet var segmentedControl: UISegmentedControl!
+    @IBOutlet var clearButton: UIButton!
 
     var drawingOptions = DrawingOptions()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupSegmentedControl()
+        setupSlider()
+        setupClearButton()
+    }
+
+    private func setupClearButton() {
+        clearButton.addTarget(self, action: #selector(clearDidTap), for: .touchUpInside)
+    }
+
+    private func setupSlider() {
         slider.addTarget(self, action: #selector(sliderDidChange), for: .valueChanged)
-        segmentedControl.addTarget(self, action: #selector(toolDidChange), for: .valueChanged)
         slider.value = drawingOptions.sliderValue
     }
 
@@ -38,21 +49,27 @@ class SceneOptionsViewController: UIViewController {
             segmentedControl.setTitle(tool.title, forSegmentAt: index)
         }
         segmentedControl.selectedSegmentIndex = drawingOptions.selectedToolIndex
+        segmentedControl.addTarget(self, action: #selector(toolDidChange), for: .valueChanged)
     }
 }
 
 extension SceneOptionsViewController {
-    @IBAction @objc func sliderDidChange() {
+    @objc func sliderDidChange() {
         let lineWidth = CGFloat(slider.value) * DrawingOptions.lineWidthRatio
 
         drawingOptions.lineWidth = lineWidth
         delegate?.optionsDidChanges(self, options: drawingOptions)
     }
 
-    @IBAction @objc func toolDidChange() {
+    @objc func toolDidChange() {
         let index = segmentedControl.selectedSegmentIndex
 
         drawingOptions.selectedToolIndex = index
         delegate?.optionsDidChanges(self, options: drawingOptions)
+    }
+
+    @objc func clearDidTap() {
+        // TODO: show confirmation alert or inline confirmation prompt
+        delegate?.didTapClearButton(self)
     }
 }

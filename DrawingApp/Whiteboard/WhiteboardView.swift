@@ -26,6 +26,7 @@ class WhiteboardView: UIView {
     var options = Options() {
         didSet {
             backgroundColor = options.backgroundColor
+            setNeedsDisplay()
         }
     }
 
