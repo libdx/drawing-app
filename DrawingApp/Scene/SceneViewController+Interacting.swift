@@ -16,7 +16,7 @@ extension SceneViewController {
     }
 }
 
-extension SceneViewController: DrawingOptionsDelegate {
+extension SceneViewController: SceneOptionsDelegate {
     func optionsDidChanges(_ controller: SceneOptionsViewController, options: DrawingOptions) {
         uiDidChangeOptions(options)
     }

@@ -8,16 +8,6 @@
 
 import UIKit
 
-extension DrawingOptions {
-    var graphicsOptions: GraphicsOptions {
-        return GraphicsOptions(
-            lineWidth: lineWidth,
-            strokeColor: strokeColor.cgColor,
-            lineDash: lineDash
-        )
-    }
-}
-
 extension WhiteboardView.Options {
     init(_ drawingOptions: DrawingOptions) {
         backgroundColor = drawingOptions.backgroundColor
