@@ -13,4 +13,3 @@ extension SceneViewController: SceneStateUpdating {
         whiteboardView.options = WhiteboardView.Options(state.drawingOptions)
     }
 }
-

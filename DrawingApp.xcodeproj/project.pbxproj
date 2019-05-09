@@ -23,6 +23,9 @@
 		91CABD362284737700ADA6D3 /* DrawTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CABD352284737700ADA6D3 /* DrawTool.swift */; };
 		91CABD382284737E00ADA6D3 /* DashesTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CABD372284737E00ADA6D3 /* DashesTool.swift */; };
 		91CABD3A2284738500ADA6D3 /* EraseTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CABD392284738500ADA6D3 /* EraseTool.swift */; };
+		91CABD3D228475C600ADA6D3 /* Stroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CABD3C228475C600ADA6D3 /* Stroke.swift */; };
+		91CABD3F228475D500ADA6D3 /* Eraser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CABD3E228475D500ADA6D3 /* Eraser.swift */; };
+		91CABD41228475DC00ADA6D3 /* DashedStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CABD40228475DC00ADA6D3 /* DashedStroke.swift */; };
 		91E1C4C8227A3F0A00C6F139 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E1C4C7227A3F0A00C6F139 /* AppDelegate.swift */; };
 		91E1C4CA227A3F0A00C6F139 /* SceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91E1C4C9227A3F0A00C6F139 /* SceneViewController.swift */; };
 		91E1C4CD227A3F0A00C6F139 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91E1C4CB227A3F0A00C6F139 /* Main.storyboard */; };
@@ -49,6 +52,9 @@
 		91CABD352284737700ADA6D3 /* DrawTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawTool.swift; sourceTree = "<group>"; };
 		91CABD372284737E00ADA6D3 /* DashesTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashesTool.swift; sourceTree = "<group>"; };
 		91CABD392284738500ADA6D3 /* EraseTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EraseTool.swift; sourceTree = "<group>"; };
+		91CABD3C228475C600ADA6D3 /* Stroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stroke.swift; sourceTree = "<group>"; };
+		91CABD3E228475D500ADA6D3 /* Eraser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eraser.swift; sourceTree = "<group>"; };
+		91CABD40228475DC00ADA6D3 /* DashedStroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedStroke.swift; sourceTree = "<group>"; };
 		91E1C4C4227A3F0A00C6F139 /* DrawingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrawingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91E1C4C7227A3F0A00C6F139 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		91E1C4C9227A3F0A00C6F139 /* SceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +80,7 @@
 		9163501F2282280F0088F1EA /* Whiteboard */ = {
 			isa = PBXGroup;
 			children = (
+				91CABD3B228475AB00ADA6D3 /* Shapes */,
 				91E1C4EB227C445300C6F139 /* WhiteboardView.swift */,
 			);
 			path = Whiteboard;
@@ -132,6 +139,16 @@
 			path = DrawingTools;
 			sourceTree = "<group>";
 		};
+		91CABD3B228475AB00ADA6D3 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				91CABD3C228475C600ADA6D3 /* Stroke.swift */,
+				91CABD3E228475D500ADA6D3 /* Eraser.swift */,
+				91CABD40228475DC00ADA6D3 /* DashedStroke.swift */,
+			);
+			path = Shapes;
+			sourceTree = "<group>";
+		};
 		91E1C4BB227A3F0A00C6F139 = {
 			isa = PBXGroup;
 			children = (
@@ -151,11 +168,11 @@
 		91E1C4C6227A3F0A00C6F139 /* DrawingApp */ = {
 			isa = PBXGroup;
 			children = (
+				91BDA2B6227CD18000FC1932 /* Types.swift */,
 				91BDA2B5227CD10700FC1932 /* Scene */,
 				91BDA2C0227CD3F800FC1932 /* SceneOptions */,
 				91CABD2F2284728A00ADA6D3 /* DrawingOptions */,
 				91BDA2C1227CD49F00FC1932 /* Browser */,
-				91BDA2B6227CD18000FC1932 /* Types.swift */,
 				9163501F2282280F0088F1EA /* Whiteboard */,
 				91E1C4C7227A3F0A00C6F139 /* AppDelegate.swift */,
 				91E1C4CB227A3F0A00C6F139 /* Main.storyboard */,
@@ -245,11 +262,14 @@
 				9163501E2282216D0088F1EA /* WhiteboardView+Scene.swift in Sources */,
 				91E1C4ED227C445300C6F139 /* WhiteboardView.swift in Sources */,
 				91E1C4DA227A3F8500C6F139 /* BrowserViewController.swift in Sources */,
+				91CABD3D228475C600ADA6D3 /* Stroke.swift in Sources */,
 				91BDA2B7227CD18000FC1932 /* Types.swift in Sources */,
+				91CABD3F228475D500ADA6D3 /* Eraser.swift in Sources */,
 				91CABD342284732900ADA6D3 /* DrawingOptions.swift in Sources */,
 				91BDA2C3227CD80A00FC1932 /* SceneRouting.swift in Sources */,
 				91BDA2B2227C8F1A00FC1932 /* SceneOptionsViewController.swift in Sources */,
 				91BDA2C5227CD91100FC1932 /* SceneState.swift in Sources */,
+				91CABD41228475DC00ADA6D3 /* DashedStroke.swift in Sources */,
 				91E1C4C8227A3F0A00C6F139 /* AppDelegate.swift in Sources */,
 				91BDA2BF227CD31700FC1932 /* SceneViewController+Interacting.swift in Sources */,
 				91CABD2E2284721B00ADA6D3 /* DrawingOptions+Graphics.swift in Sources */,
