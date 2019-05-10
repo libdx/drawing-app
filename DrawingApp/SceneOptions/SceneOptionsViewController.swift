@@ -30,13 +30,19 @@ class SceneOptionsViewController: UIViewController {
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var clearButton: UIButton!
 
-    var state = SceneOptionsState()
+    var state = SceneOptionsState() {
+        willSet {
+            update(with: newValue)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSegmentedControl()
         setupSlider()
         setupClearButton()
+
+        state = SceneOptionsState()
     }
 
     private func setupClearButton() {
@@ -45,15 +51,20 @@ class SceneOptionsViewController: UIViewController {
 
     private func setupSlider() {
         slider.addTarget(self, action: #selector(sliderDidChange), for: .valueChanged)
-        slider.value = state.drawingOptions.sliderValue
     }
 
     private func setupSegmentedControl() {
         for (index, tool) in DrawingOptions.allTools.enumerated() {
             segmentedControl.setTitle(tool.title, forSegmentAt: index)
         }
-        segmentedControl.selectedSegmentIndex = state.drawingOptions.selectedToolIndex
         segmentedControl.addTarget(self, action: #selector(toolDidChange), for: .valueChanged)
+    }
+}
+
+extension SceneOptionsViewController {
+    func update(with state: SceneOptionsState) {
+        slider.value = state.drawingOptions.sliderValue
+        segmentedControl.selectedSegmentIndex = state.drawingOptions.selectedToolIndex
     }
 }
 
