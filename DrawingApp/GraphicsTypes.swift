@@ -23,8 +23,8 @@ extension LineDash {
 
 struct GraphicsOptions {
     var lineWidth: CGFloat = 10
-    var strokeColor = UIColor.darkGray.cgColor
-    var lineDash = LineDash.solid
+    var strokeColor = UIColor.darkGray
+    var lineDash = LineDash.dash
 }
 
 protocol Shape {

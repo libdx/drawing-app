@@ -17,7 +17,6 @@
 		91BDA2BF227CD31700FC1932 /* SceneViewController+Interacting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BDA2BE227CD31700FC1932 /* SceneViewController+Interacting.swift */; };
 		91BDA2C3227CD80A00FC1932 /* SceneRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BDA2C2227CD80A00FC1932 /* SceneRouting.swift */; };
 		91BDA2C5227CD91100FC1932 /* SceneState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BDA2C4227CD91100FC1932 /* SceneState.swift */; };
-		91CABD2E2284721B00ADA6D3 /* DrawingOptions+Graphics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CABD2D2284721B00ADA6D3 /* DrawingOptions+Graphics.swift */; };
 		91CABD31228472A300ADA6D3 /* DrawingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CABD30228472A300ADA6D3 /* DrawingTool.swift */; };
 		91CABD342284732900ADA6D3 /* DrawingOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CABD332284732900ADA6D3 /* DrawingOptions.swift */; };
 		91CABD362284737700ADA6D3 /* DrawTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91CABD352284737700ADA6D3 /* DrawTool.swift */; };
@@ -46,7 +45,6 @@
 		91BDA2BE227CD31700FC1932 /* SceneViewController+Interacting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneViewController+Interacting.swift"; sourceTree = "<group>"; };
 		91BDA2C2227CD80A00FC1932 /* SceneRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneRouting.swift; sourceTree = "<group>"; };
 		91BDA2C4227CD91100FC1932 /* SceneState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneState.swift; sourceTree = "<group>"; };
-		91CABD2D2284721B00ADA6D3 /* DrawingOptions+Graphics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DrawingOptions+Graphics.swift"; sourceTree = "<group>"; };
 		91CABD30228472A300ADA6D3 /* DrawingTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingTool.swift; sourceTree = "<group>"; };
 		91CABD332284732900ADA6D3 /* DrawingOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingOptions.swift; sourceTree = "<group>"; };
 		91CABD352284737700ADA6D3 /* DrawTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawTool.swift; sourceTree = "<group>"; };
@@ -124,7 +122,6 @@
 				91CABD30228472A300ADA6D3 /* DrawingTool.swift */,
 				91CABD32228472B600ADA6D3 /* DrawingTools */,
 				91CABD332284732900ADA6D3 /* DrawingOptions.swift */,
-				91CABD2D2284721B00ADA6D3 /* DrawingOptions+Graphics.swift */,
 			);
 			path = DrawingOptions;
 			sourceTree = "<group>";
@@ -272,7 +269,6 @@
 				91CABD41228475DC00ADA6D3 /* DashedStroke.swift in Sources */,
 				91E1C4C8227A3F0A00C6F139 /* AppDelegate.swift in Sources */,
 				91BDA2BF227CD31700FC1932 /* SceneViewController+Interacting.swift in Sources */,
-				91CABD2E2284721B00ADA6D3 /* DrawingOptions+Graphics.swift in Sources */,
 				91CABD31228472A300ADA6D3 /* DrawingTool.swift in Sources */,
 				91BDA2BB227CD24F00FC1932 /* SceneInteracting.swift in Sources */,
 				91CABD3A2284738500ADA6D3 /* EraseTool.swift in Sources */,

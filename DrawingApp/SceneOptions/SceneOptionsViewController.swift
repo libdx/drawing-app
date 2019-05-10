@@ -10,8 +10,12 @@ import UIKit
 
 extension DrawingOptions {
     var sliderValue: Float {
-        return Float(lineWidth / DrawingOptions.lineWidthRatio)
+        return Float(graphicsOptions.lineWidth / DrawingOptions.lineWidthRatio)
     }
+}
+
+struct SceneOptionsState {
+    var drawingOptions = DrawingOptions()
 }
 
 protocol SceneOptionsDelegate: class {
@@ -26,7 +30,7 @@ class SceneOptionsViewController: UIViewController {
     @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var clearButton: UIButton!
 
-    var drawingOptions = DrawingOptions()
+    var state = SceneOptionsState()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,14 +45,14 @@ class SceneOptionsViewController: UIViewController {
 
     private func setupSlider() {
         slider.addTarget(self, action: #selector(sliderDidChange), for: .valueChanged)
-        slider.value = drawingOptions.sliderValue
+        slider.value = state.drawingOptions.sliderValue
     }
 
     private func setupSegmentedControl() {
         for (index, tool) in DrawingOptions.allTools.enumerated() {
             segmentedControl.setTitle(tool.title, forSegmentAt: index)
         }
-        segmentedControl.selectedSegmentIndex = drawingOptions.selectedToolIndex
+        segmentedControl.selectedSegmentIndex = state.drawingOptions.selectedToolIndex
         segmentedControl.addTarget(self, action: #selector(toolDidChange), for: .valueChanged)
     }
 }
@@ -57,15 +61,15 @@ extension SceneOptionsViewController {
     @objc func sliderDidChange() {
         let lineWidth = CGFloat(slider.value) * DrawingOptions.lineWidthRatio
 
-        drawingOptions.lineWidth = lineWidth
-        delegate?.optionsDidChanges(self, options: drawingOptions)
+        state.drawingOptions.graphicsOptions.lineWidth = lineWidth
+        delegate?.optionsDidChanges(self, options: state.drawingOptions)
     }
 
     @objc func toolDidChange() {
         let index = segmentedControl.selectedSegmentIndex
 
-        drawingOptions.selectedToolIndex = index
-        delegate?.optionsDidChanges(self, options: drawingOptions)
+        state.drawingOptions.selectedToolIndex = index
+        delegate?.optionsDidChanges(self, options: state.drawingOptions)
     }
 
     @objc func clearDidTap() {

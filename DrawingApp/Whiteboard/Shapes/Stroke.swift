@@ -19,7 +19,7 @@ extension Stroke: Shape {
     init(points: [CGPoint], options: GraphicsOptions) {
         self.points = points
         width = options.lineWidth
-        color = options.strokeColor
+        color = options.strokeColor.cgColor
     }
 
     mutating func append(point: CGPoint) {

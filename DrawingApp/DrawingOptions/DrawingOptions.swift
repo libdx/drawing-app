@@ -16,10 +16,8 @@ struct DrawingOptions {
 
     static let lineWidthRatio: CGFloat = 40
 
-    var lineWidth: CGFloat = 10
-    var strokeColor = UIColor.darkGray
+    var graphicsOptions = GraphicsOptions()
     var backgroundColor = UIColor.white
-    var lineDash = LineDash.dash
     var selectedTool: DrawingTool {
         return DrawingOptions.allTools[selectedToolIndex]
     }
