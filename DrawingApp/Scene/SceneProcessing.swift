@@ -9,12 +9,14 @@
 import Foundation
 
 protocol SceneProcessing {
+    var state: SceneState { get }
+
     func changeDrawingOptions(_ options: DrawingOptions) -> SceneState
     func addNewShape(_ shape: Shape) -> SceneState
     func clearShapes() -> SceneState
 }
 
-extension SceneProcessing where Self: SceneStateDisplaying {
+extension SceneProcessing {
     func changeDrawingOptions(_ options: DrawingOptions) -> SceneState {
         var state = self.state
         state.drawingOptions = options

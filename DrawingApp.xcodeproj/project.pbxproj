@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9149C6772289C3D300DD61F4 /* SceneOptionsInteracting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9149C6762289C3D300DD61F4 /* SceneOptionsInteracting.swift */; };
+		9149C6792289C3DB00DD61F4 /* SceneOptionsProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9149C6782289C3DB00DD61F4 /* SceneOptionsProcessing.swift */; };
+		9149C67B2289C3F200DD61F4 /* SceneOptionsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9149C67A2289C3F200DD61F4 /* SceneOptionsState.swift */; };
+		9149C67D228A06E800DD61F4 /* SceneOptionsViewController+Interacting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9149C67C228A06E800DD61F4 /* SceneOptionsViewController+Interacting.swift */; };
+		9149C67F228A072E00DD61F4 /* SceneOptionsViewController+Updating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9149C67E228A072E00DD61F4 /* SceneOptionsViewController+Updating.swift */; };
 		9163501E2282216D0088F1EA /* WhiteboardView+Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9163501D2282216D0088F1EA /* WhiteboardView+Scene.swift */; };
 		91A23AC92286241800111D5D /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91A23AC82286241800111D5D /* File.swift */; };
 		91BDA2B2227C8F1A00FC1932 /* SceneOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91BDA2B1227C8F1A00FC1932 /* SceneOptionsViewController.swift */; };
@@ -36,6 +41,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9149C6762289C3D300DD61F4 /* SceneOptionsInteracting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneOptionsInteracting.swift; sourceTree = "<group>"; };
+		9149C6782289C3DB00DD61F4 /* SceneOptionsProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneOptionsProcessing.swift; sourceTree = "<group>"; };
+		9149C67A2289C3F200DD61F4 /* SceneOptionsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneOptionsState.swift; sourceTree = "<group>"; };
+		9149C67C228A06E800DD61F4 /* SceneOptionsViewController+Interacting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneOptionsViewController+Interacting.swift"; sourceTree = "<group>"; };
+		9149C67E228A072E00DD61F4 /* SceneOptionsViewController+Updating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneOptionsViewController+Updating.swift"; sourceTree = "<group>"; };
 		9163501D2282216D0088F1EA /* WhiteboardView+Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WhiteboardView+Scene.swift"; sourceTree = "<group>"; };
 		91A23AC82286241800111D5D /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		91BDA2B1227C8F1A00FC1932 /* SceneOptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneOptionsViewController.swift; sourceTree = "<group>"; };
@@ -104,8 +114,13 @@
 		91BDA2C0227CD3F800FC1932 /* SceneOptions */ = {
 			isa = PBXGroup;
 			children = (
-				91BDA2B1227C8F1A00FC1932 /* SceneOptionsViewController.swift */,
+				9149C67A2289C3F200DD61F4 /* SceneOptionsState.swift */,
+				9149C6782289C3DB00DD61F4 /* SceneOptionsProcessing.swift */,
+				9149C6762289C3D300DD61F4 /* SceneOptionsInteracting.swift */,
 				91BDA2B3227C8F5600FC1932 /* SceneOptionsViewController.xib */,
+				91BDA2B1227C8F1A00FC1932 /* SceneOptionsViewController.swift */,
+				9149C67C228A06E800DD61F4 /* SceneOptionsViewController+Interacting.swift */,
+				9149C67E228A072E00DD61F4 /* SceneOptionsViewController+Updating.swift */,
 			);
 			path = SceneOptions;
 			sourceTree = "<group>";
@@ -256,7 +271,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				91BDA2B9227CD23300FC1932 /* SceneProcessing.swift in Sources */,
+				9149C6772289C3D300DD61F4 /* SceneOptionsInteracting.swift in Sources */,
 				91BDA2BD227CD29300FC1932 /* SceneViewController+Updating.swift in Sources */,
+				9149C67D228A06E800DD61F4 /* SceneOptionsViewController+Interacting.swift in Sources */,
+				9149C67B2289C3F200DD61F4 /* SceneOptionsState.swift in Sources */,
 				91CABD362284737700ADA6D3 /* DrawTool.swift in Sources */,
 				91E1C4CA227A3F0A00C6F139 /* SceneViewController.swift in Sources */,
 				9163501E2282216D0088F1EA /* WhiteboardView+Scene.swift in Sources */,
@@ -271,11 +289,13 @@
 				91BDA2B2227C8F1A00FC1932 /* SceneOptionsViewController.swift in Sources */,
 				91BDA2C5227CD91100FC1932 /* SceneState.swift in Sources */,
 				91CABD41228475DC00ADA6D3 /* DashedStroke.swift in Sources */,
+				9149C67F228A072E00DD61F4 /* SceneOptionsViewController+Updating.swift in Sources */,
 				91E1C4C8227A3F0A00C6F139 /* AppDelegate.swift in Sources */,
 				91BDA2BF227CD31700FC1932 /* SceneViewController+Interacting.swift in Sources */,
 				91CABD31228472A300ADA6D3 /* DrawingTool.swift in Sources */,
 				91BDA2BB227CD24F00FC1932 /* SceneInteracting.swift in Sources */,
 				91CABD3A2284738500ADA6D3 /* EraseTool.swift in Sources */,
+				9149C6792289C3DB00DD61F4 /* SceneOptionsProcessing.swift in Sources */,
 				91CABD382284737E00ADA6D3 /* DashesTool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

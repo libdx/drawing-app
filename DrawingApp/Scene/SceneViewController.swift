@@ -13,6 +13,10 @@ protocol ScenePopoverSupport {
     var optionsController: UIViewController! { get }
 }
 
+protocol SceneStateDisplaying: class {
+    var state: SceneState { get set }
+}
+
 class SceneViewController: UIViewController, SceneStateDisplaying, ScenePopoverSupport {
 
     @IBOutlet var whiteboardView: WhiteboardView!

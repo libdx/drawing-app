@@ -8,14 +8,12 @@
 
 import UIKit
 
-extension DrawingOptions {
-    var sliderValue: Float {
-        return Float(graphicsOptions.lineWidth / DrawingOptions.lineWidthRatio)
-    }
+protocol SceneOptionsStateDisplaying: class {
+    var state: SceneOptionsState { get set }
 }
 
-struct SceneOptionsState {
-    var drawingOptions = DrawingOptions()
+protocol SceneOptionsStateUpdating {
+    func update(with: SceneOptionsState)
 }
 
 protocol SceneOptionsDelegate: class {
@@ -23,7 +21,7 @@ protocol SceneOptionsDelegate: class {
     func didTapClearButton(_ controller: SceneOptionsViewController)
 }
 
-class SceneOptionsViewController: UIViewController {
+class SceneOptionsViewController: UIViewController, SceneOptionsStateDisplaying {
     weak var delegate: SceneOptionsDelegate?
 
     @IBOutlet var slider: UISlider!
@@ -61,30 +59,4 @@ class SceneOptionsViewController: UIViewController {
     }
 }
 
-extension SceneOptionsViewController {
-    func update(with state: SceneOptionsState) {
-        slider.value = state.drawingOptions.sliderValue
-        segmentedControl.selectedSegmentIndex = state.drawingOptions.selectedToolIndex
-    }
-}
-
-extension SceneOptionsViewController {
-    @objc func sliderDidChange() {
-        let lineWidth = CGFloat(slider.value) * DrawingOptions.lineWidthRatio
-
-        state.drawingOptions.graphicsOptions.lineWidth = lineWidth
-        delegate?.optionsDidChanges(self, options: state.drawingOptions)
-    }
-
-    @objc func toolDidChange() {
-        let index = segmentedControl.selectedSegmentIndex
-
-        state.drawingOptions.selectedToolIndex = index
-        delegate?.optionsDidChanges(self, options: state.drawingOptions)
-    }
-
-    @objc func clearDidTap() {
-        // TODO: show confirmation alert or inline confirmation prompt
-        delegate?.didTapClearButton(self)
-    }
-}
+extension SceneOptionsViewController: SceneOptionsProcessing {}

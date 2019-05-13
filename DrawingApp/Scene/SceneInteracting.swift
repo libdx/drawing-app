@@ -9,8 +9,6 @@
 import Foundation
 
 protocol SceneInteracting {
-    var ui: SceneStateDisplaying? { get }
-
     func uiDidLoad()
     func uiDidTapEdit()
     func uiDidChangeOptions(_ options: DrawingOptions)
@@ -18,27 +16,21 @@ protocol SceneInteracting {
     func uiDidTapClear()
 }
 
-extension SceneInteracting where Self: SceneStateDisplaying {
-    var ui: SceneStateDisplaying? {
-        return self
-    }
-}
-
-extension SceneInteracting where Self: SceneProcessing {
+extension SceneInteracting where Self: SceneProcessing, Self: SceneStateDisplaying {
     func uiDidLoad() {
-        ui?.state = SceneState()
+        state = SceneState()
     }
 
     func uiDidChangeOptions(_ options: DrawingOptions) {
-        ui?.state = changeDrawingOptions(options)
+        state = changeDrawingOptions(options)
     }
 
     func uiDidAddNewShape(_ shape: Shape) {
-        ui?.state = addNewShape(shape)
+        state = addNewShape(shape)
     }
 
     func uiDidTapClear() {
-        ui?.state = clearShapes()
+        state = clearShapes()
     }
 }
 
