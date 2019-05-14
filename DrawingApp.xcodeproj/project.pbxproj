@@ -166,7 +166,7 @@
 		91E1C4BB227A3F0A00C6F139 = {
 			isa = PBXGroup;
 			children = (
-				91E1C4C6227A3F0A00C6F139 /* DrawingApp */,
+				91E1C4C6227A3F0A00C6F139 /* Sources */,
 				91E1C4C5227A3F0A00C6F139 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -179,7 +179,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		91E1C4C6227A3F0A00C6F139 /* DrawingApp */ = {
+		91E1C4C6227A3F0A00C6F139 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				91BDA2B6227CD18000FC1932 /* GraphicsTypes.swift */,
@@ -195,7 +195,7 @@
 				91E1C4D0227A3F0C00C6F139 /* LaunchScreen.storyboard */,
 				91E1C4D3227A3F0C00C6F139 /* Info.plist */,
 			);
-			path = DrawingApp;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
