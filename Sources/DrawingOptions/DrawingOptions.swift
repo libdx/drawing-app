@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct DrawingOptions {
+struct DrawingOptions: Equatable {
 
     static let allTools: [DrawingTool] = [
         DrawTool(), DashesTool(), EraseTool()

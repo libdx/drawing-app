@@ -8,14 +8,15 @@
 
 import Foundation
 import CoreGraphics
+import UIKit
 
-struct Stroke {
-    var points: [CGPoint]
-    var width: CGFloat
-    var color: CGColor
+struct Stroke: Equatable {
+    var points: [CGPoint] = []
+    var width: CGFloat = 0
+    var color: CGColor = UIColor.black.cgColor
 }
 
-extension Stroke: Shape {
+extension Stroke: Drawing {
     init(points: [CGPoint], options: GraphicsOptions) {
         self.points = points
         width = options.lineWidth

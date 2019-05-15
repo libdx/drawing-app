@@ -13,7 +13,7 @@ class DrawTool: DrawingTool {
         return "Draw"
     }
 
-    var shapeType: Shape.Type {
+    var drawingType: Drawing.Type {
         return Stroke.self
     }
 }

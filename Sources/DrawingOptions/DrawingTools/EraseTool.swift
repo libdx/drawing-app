@@ -13,7 +13,7 @@ class EraseTool: DrawingTool {
         return "Erase"
     }
 
-    var shapeType: Shape.Type {
+    var drawingType: Drawing.Type {
         return Eraser.self
     }
 }

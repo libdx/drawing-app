@@ -9,11 +9,11 @@
 import Foundation
 import CoreGraphics
 
-struct Eraser {
+struct Eraser: Equatable {
     var stroke: Stroke
 }
 
-extension Eraser: Shape {
+extension Eraser: Drawing {
     init(points: [CGPoint], options: GraphicsOptions) {
         stroke = Stroke(points: points, options: options)
     }

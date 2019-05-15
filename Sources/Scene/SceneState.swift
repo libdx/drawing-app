@@ -8,7 +8,12 @@
 
 import Foundation
 
-struct SceneState {
+struct SceneState: Equatable {
     var shapes: [Shape] = []
     var drawingOptions = DrawingOptions()
+}
+
+func ==(_ lhs: SceneState, rhs: SceneState) -> Bool {
+    return lhs.shapes == rhs.shapes &&
+        lhs.drawingOptions == rhs.drawingOptions
 }

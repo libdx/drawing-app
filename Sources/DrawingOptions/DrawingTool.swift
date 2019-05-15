@@ -10,5 +10,5 @@ import UIKit
 
 protocol DrawingTool {
     var title: String { get }
-    var shapeType: Shape.Type { get }
+    var drawingType: Drawing.Type { get }
 }

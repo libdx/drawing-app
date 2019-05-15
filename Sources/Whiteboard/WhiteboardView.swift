@@ -18,7 +18,7 @@ protocol WhiteboardViewDelegate {
 class WhiteboardView: UIView {
 
     struct Options {
-        var shapeType: Shape.Type = Stroke.self
+        var drawingType: Drawing.Type = Stroke.self
         var graphicsOptions = GraphicsOptions()
         var backgroundColor = UIColor.white
     }
@@ -74,9 +74,10 @@ class WhiteboardView: UIView {
 
         let location: CGPoint = touch.location(in: self)
 
-        currentShape = options.shapeType.init(
+        currentShape = Shape(
             points: [location],
-            options: options.graphicsOptions
+            options: options.graphicsOptions,
+            drawingType: options.drawingType
         )
     }
 

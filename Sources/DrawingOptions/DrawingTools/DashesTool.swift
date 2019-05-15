@@ -13,7 +13,7 @@ class DashesTool: DrawingTool {
         return "Dashes"
     }
 
-    var shapeType: Shape.Type {
+    var drawingType: Drawing.Type {
         return DashedStroke.self
     }
 }

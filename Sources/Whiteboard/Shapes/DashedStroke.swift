@@ -9,12 +9,12 @@
 import Foundation
 import CoreGraphics
 
-struct DashedStroke {
+struct DashedStroke: Equatable {
     var lineDash: LineDash
     var stroke: Stroke
 }
 
-extension DashedStroke: Shape {
+extension DashedStroke: Drawing {
     init(points: [CGPoint], options: GraphicsOptions) {
         stroke = Stroke(points: points, options: options)
         lineDash = options.lineDash

@@ -11,7 +11,7 @@ import UIKit
 extension WhiteboardView.Options {
     init(_ drawingOptions: DrawingOptions) {
         backgroundColor = drawingOptions.backgroundColor
-        shapeType = drawingOptions.selectedTool.shapeType
+        drawingType = drawingOptions.selectedTool.drawingType
         graphicsOptions = drawingOptions.graphicsOptions
     }
 }
